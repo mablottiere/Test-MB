@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Marek — Artiste visuel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: black;
+      color: white;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(6px);
+      z-index: 10;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2px;
+      margin-top: 70px;
+    }
+
+    .grid img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .grid img:hover {
+      opacity: 0.8;
+    }
+
+    .viewer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.95);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 20;
+    }
+
+    .viewer img {
+      max-width: 90%;
+      max-height: 90%;
+    }
+
+    .viewer:active {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Marek — Artiste visuel</h1>
+</header>
+
+<div class="grid">
+  <img src="https://picsum.photos/800/800?1" onclick="openImg(this.src)">
+  <img src="https://picsum.photos/800/800?2" onclick="openImg(this.src)">
+  <img src="https://picsum.photos/800/800?3" onclick="openImg(this.src)">
+  <img src="https://picsum.photos/800/800?4" onclick="openImg(this.src)">
+  <img src="https://picsum.photos/800/800?5" onclick="openImg(this.src)">
+  <img src="https://picsum.photos/800/800?6" onclick="openImg(this.src)">
+</div>
+
+<div class="viewer" id="viewer" onclick="closeImg()">
+  <img id="full">
+</div>
+
+<script>
+  function openImg(src) {
+    document.getElementById('viewer').style.display = 'flex';
+    document.getElementById('full').src = src;
+  }
+
+  function closeImg() {
+    document.getElementById('viewer').style.display = 'none';
+  }
+</script>
+
+</body>
+</html>
